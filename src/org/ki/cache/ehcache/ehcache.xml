@@ -80,14 +80,14 @@ Answer - ehcache expired it due to the timeToIdle property set to 120 seconds.)
 
 diskPersistent=true since we want an enterprise session management feature - ability to use sessions after
 even after a JVM restart.  -->
-    <!-- <cache name="jsecurity-activeSessionCache"
+    <!-- <cache name="ki-activeSessionCache"
    maxElementsInMemory="20000"
    eternal="true"
    overflowToDisk="true"
    diskPersistent="true"
    diskExpiryThreadIntervalSeconds="600"/> -->
 
-    <cache name="org.jsecurity.realm.text.PropertiesRealm-0-accounts"
+    <cache name="org.ki.realm.text.PropertiesRealm-0-accounts"
            maxElementsInMemory="1000"
            eternal="true"
            overflowToDisk="true"/>

@@ -20,4 +20,4 @@
  * <a href="http://ehcache.sourceforge.net" target="_top">Ehcache</a>-based implementations of JSecurity's
  * cache interfaces.
  */
-package org.jsecurity.cache.ehcache;
+package org.ki.cache.ehcache;

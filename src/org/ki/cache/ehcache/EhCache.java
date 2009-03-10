@@ -16,13 +16,13 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.jsecurity.cache.ehcache;
+package org.ki.cache.ehcache;
 
 import net.sf.ehcache.Element;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.jsecurity.cache.Cache;
-import org.jsecurity.cache.CacheException;
+import org.ki.cache.Cache;
+import org.ki.cache.CacheException;
 
 import java.util.Collections;
 import java.util.LinkedHashSet;
@@ -30,7 +30,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * JSecurity {@link org.jsecurity.cache.Cache} implementation that wraps an {@link net.sf.ehcache.Ehcache} instance.
+ * JSecurity {@link org.ki.cache.Cache} implementation that wraps an {@link net.sf.ehcache.Ehcache} instance.
  *
  * @author Jeremy Haile
  * @author Les Hazlewood
