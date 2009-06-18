@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.apache.ki.cache.ehcache;
+package org.apache.shiro.cache.ehcache;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -24,21 +24,21 @@ import java.io.InputStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import org.apache.ki.cache.Cache;
-import org.apache.ki.cache.CacheException;
-import org.apache.ki.cache.CacheManager;
-import org.apache.ki.io.ResourceUtils;
-import org.apache.ki.session.mgt.eis.CachingSessionDAO;
-import org.apache.ki.util.Destroyable;
-import org.apache.ki.util.Initializable;
+import org.apache.shiro.cache.Cache;
+import org.apache.shiro.cache.CacheException;
+import org.apache.shiro.cache.CacheManager;
+import org.apache.shiro.io.ResourceUtils;
+import org.apache.shiro.session.mgt.eis.CachingSessionDAO;
+import org.apache.shiro.util.Destroyable;
+import org.apache.shiro.util.Initializable;
 
 /**
- * Ki <code>CacheManager</code> implementation utilizing the Ehcache framework for all cache functionality.
+ * Shiro <code>CacheManager</code> implementation utilizing the Ehcache framework for all cache functionality.
  * <p/>
  * This class can {@link #setCacheManager(net.sf.ehcache.CacheManager) accept} a manually configured
  * {@link net.sf.ehcache.CacheManager net.sf.ehcache.CacheManager} instance,
  * or an <code>ehcache.xml</code> path location can be specified instead and one will be constructed. If neither are
- * specified, Ki's failsafe <code><a href="./ehcache.xml">ehcache.xml</a></code> file will be used by default.
+ * specified, Shiro's failsafe <code><a href="./ehcache.xml">ehcache.xml</a></code> file will be used by default.
  *
  * <p>This implementation requires EhCache 1.2 and above. Make sure EhCache 1.1 or earlier
  * is not in the classpath or it will not work.</p>
@@ -54,7 +54,7 @@ public class EhCacheManager implements CacheManager, Initializable, Destroyable 
 
     /**
      * The default name for the active sessions cache, equal to
-     * {@link org.apache.ki.session.mgt.eis.CachingSessionDAO#ACTIVE_SESSION_CACHE_NAME CachingSessionDAO.ACTIVE_SESSION_CACHE_NAME}.
+     * {@link org.apache.shiro.session.mgt.eis.CachingSessionDAO#ACTIVE_SESSION_CACHE_NAME CachingSessionDAO.ACTIVE_SESSION_CACHE_NAME}.
      */
     public static final String DEFAULT_ACTIVE_SESSIONS_CACHE_NAME = CachingSessionDAO.ACTIVE_SESSION_CACHE_NAME;
 
@@ -87,7 +87,7 @@ public class EhCacheManager implements CacheManager, Initializable, Destroyable 
     /**
      * Classpath file location of the ehcache CacheManager config file.
      */
-    private String cacheManagerConfigFile = "classpath:org/ki/cache/ehcache/ehcache.xml";
+    private String cacheManagerConfigFile = "classpath:org/shiro/cache/ehcache/ehcache.xml";
 
     /**
      * Default no argument constructor
@@ -116,7 +116,7 @@ public class EhCacheManager implements CacheManager, Initializable, Destroyable 
     /**
      * Returns the resource location of the config file used to initialize a new
      * EhCache CacheManager instance.  The string can be any resource path supported by the
-     * {@link org.apache.ki.io.ResourceUtils#getInputStreamForPath(String)} call.
+     * {@link org.apache.shiro.io.ResourceUtils#getInputStreamForPath(String)} call.
      *
      * <p>This property is ignored if the CacheManager instance is injected directly - that is, it is only used to
      * lazily create a CacheManager if one is not already provided.</p>
@@ -131,7 +131,7 @@ public class EhCacheManager implements CacheManager, Initializable, Destroyable 
     /**
      * Sets the resource location of the config file used to initialize the wrapped
      * EhCache CacheManager instance.  The string can be any resource path supported by the
-     * {@link org.apache.ki.io.ResourceUtils#getInputStreamForPath(String)} call.
+     * {@link org.apache.shiro.io.ResourceUtils#getInputStreamForPath(String)} call.
      *
      * <p>This property is ignored if the CacheManager instance is injected directly - that is, it is only used to
      * lazily create a CacheManager if one is not already provided.</p>
@@ -178,7 +178,7 @@ public class EhCacheManager implements CacheManager, Initializable, Destroyable 
                 }
                 if (name.equals(DEFAULT_ACTIVE_SESSIONS_CACHE_NAME)) {
                     if (log.isInfoEnabled()) {
-                        log.info("Creating " + DEFAULT_ACTIVE_SESSIONS_CACHE_NAME + " cache with default Ki " +
+                        log.info("Creating " + DEFAULT_ACTIVE_SESSIONS_CACHE_NAME + " cache with default Shiro " +
                                 "session cache settings.");
                     }
                     cache = buildDefaultActiveSessionsCache();
@@ -204,10 +204,10 @@ public class EhCacheManager implements CacheManager, Initializable, Destroyable 
     }
 
     /**
-     * Builds the default cache instance to use for Ki's Session Cache when enterprise Sessions are
+     * Builds the default cache instance to use for Shiro's Session Cache when enterprise Sessions are
      * enabled.
      *
-     * @return the default cache instance to use for Ki's Session Cache when enterprise Sessions are
+     * @return the default cache instance to use for Shiro's Session Cache when enterprise Sessions are
      *         enabled.
      * @throws CacheException if there is a problem constructing the Cache instance.
      */
@@ -233,11 +233,11 @@ public class EhCacheManager implements CacheManager, Initializable, Destroyable 
      * Ehcache will look for an <tt>ehcache.xml</tt> file at the root of the classpath.  If one is not found,
      * Ehcache will use its own failsafe configuration file.</p>
      *
-     * <p>Because Ki cannot use the failsafe defaults (failsafe expunges cached objects after 2 minutes,
-     * something not desireable for Ki sessions), this class manages an internal default configuration for
+     * <p>Because Shiro cannot use the failsafe defaults (failsafe expunges cached objects after 2 minutes,
+     * something not desireable for Shiro sessions), this class manages an internal default configuration for
      * this case.</p>
      *
-     * @throws org.apache.ki.cache.CacheException
+     * @throws org.apache.shiro.cache.CacheException
      *          if there are any CacheExceptions thrown by EhCache.
      * @see net.sf.ehcache.CacheManager#create
      */

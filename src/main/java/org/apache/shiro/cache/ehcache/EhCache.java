@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.apache.ki.cache.ehcache;
+package org.apache.shiro.cache.ehcache;
 
 import java.util.Collections;
 import java.util.LinkedHashSet;
@@ -28,11 +28,11 @@ import net.sf.ehcache.Element;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import org.apache.ki.cache.Cache;
-import org.apache.ki.cache.CacheException;
+import org.apache.shiro.cache.Cache;
+import org.apache.shiro.cache.CacheException;
 
 /**
- * Ki {@link org.apache.ki.cache.Cache} implementation that wraps an {@link net.sf.ehcache.Ehcache} instance.
+ * Shiro {@link org.apache.shiro.cache.Cache} implementation that wraps an {@link net.sf.ehcache.Ehcache} instance.
  *
  * @author Jeremy Haile
  * @author Les Hazlewood
@@ -52,7 +52,7 @@ public class EhCache implements Cache {
     /**
      * Constructs a new EhCache instance with the given cache.
      *
-     * @param cache - delegate EhCache instance this Ki cache instance will wrap.
+     * @param cache - delegate EhCache instance this Shiro cache instance will wrap.
      */
     public EhCache(net.sf.ehcache.Cache cache) {
         if (cache == null) {
